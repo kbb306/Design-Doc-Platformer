@@ -28,10 +28,14 @@ public class PlatformerPlayer : MonoBehaviour {
 		Vector2 corner1 = new Vector2(max.x, min.y - .1f);
 		Vector2 corner2 = new Vector2(min.x, min.y - .1f);
 		Collider2D hit = Physics2D.OverlapArea(corner1, corner2);
+		int jumps = 0;
 		bool grounded = false;
 		if (hit != null) {
-			grounded = true;
+			jumps += 1;
 } 
+	if (jumps >= 2) {
+		grounded = true;
+	}
 
 
 		anim.SetFloat("speed",Mathf.Abs(deltaX));
